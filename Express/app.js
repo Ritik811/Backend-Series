@@ -17,7 +17,12 @@ app.get("/:username/article/:title", (req, res) => {
   );
 });
 
+// Query
 
+app.get("/product", (req, res) => {
+  console.log(req.query);
+  res.send(`<h1>Product page is ${req.query.search} limit is ${req.query.limit}</h1>`);
+});
 
 app.listen(PORT, () => {
   console.log(`Server is Running at PORT:  ${PORT}`);
