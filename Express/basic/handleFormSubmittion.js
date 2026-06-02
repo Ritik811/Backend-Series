@@ -27,6 +27,11 @@ app.post("/contact", (req, res) => {
   res.send("okh");
 });
 
+app.use((req, res) => {
+  //   res.status(404).send(`<h1>Page is Not found</h1>`);
+  res.status(404).sendFile(path.join(import.meta.dirname, "views", "404.html"));
+});
+
 app.listen(PORT, () => {
   console.log("server is Running ", PORT);
 });
