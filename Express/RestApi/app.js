@@ -1,5 +1,7 @@
 import express from "express";
 import path from "path";
+import { v4 } from "uuid";
+import methodOverride from 'method-override';
 
 const app = express();
 
@@ -8,17 +10,21 @@ app.use(express.static(path.join(import.meta.dirname, "public")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 let posts = [
   {
+    id: v4(),
     username: "Ritik Rajput",
     content: "I Love Coding",
   },
   {
+    id: v4(),
     username: "Sonia",
     content: "I Love Not Coding",
   },
   {
+    id: v4(),
     username: "Vishal Billa",
     content: "I Love Traveling",
   },
@@ -33,8 +39,31 @@ app.get("/posts/new", (req, res) => {
 });
 
 app.post("/posts/new", (req, res) => {
-  const { username, content } = req.body;
-  posts.push({ username, content });
+  let { username, content } = req.body;
+  let id = v4();
+  posts.push({ id, username, content });
+  res.redirect("/posts");
+});
+
+app.get("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  let post = posts.find((post) => post.id === id);
+  console.log(post);
+  res.render("show", { post });
+});
+
+app.get("/posts/:id/edit", (req, res) => {
+  let { id } = req.params;
+  console.log(id);
+  let post = posts.find((post) => post.id === id);
+  res.render("edit", { post });
+});
+
+app.patch("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  let newContent = req.body.content;
+  let post = posts.find((post) => post.id === id);
+  post.content = newContent;
   res.redirect("/posts");
 });
 

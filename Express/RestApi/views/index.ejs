@@ -13,6 +13,7 @@
         <h2>Quora Posts</h2>
         
         <div class="posts-container">
+            <a href="http://localhost:8080/posts/new" type="submit"  class="btn btn-submit">ADD NEW POST</a>
             <% posts.forEach((post) => { %>
                 <div class="post-card">
                     <div class="post-header">
@@ -23,8 +24,11 @@
                     <p class="content"><%= post.content %></p>
                     
                     <div class="post-actions">
-                        <a href="#" class="btn btn-update">Update</a>
-                        <a href="#" class="btn btn-delete">Delete</a>
+                        <a href="/posts/<%=post.id%>/edit" class="btn btn-update">Update</a>
+                        <form action="/posts/:id?_method=DELETE" method="POST">
+                            <a href="#" class="btn btn-delete">Delete</a>
+                        </form>
+                        <a href="http://localhost:8080/posts/<%= post.id %>" class="btn btn-update">View In Details</a>
                     </div>
                 </div>
             <% }) %> 

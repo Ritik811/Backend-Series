@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show In Details</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <h2>POST IN DETAILS</h2>
+
+      <div class="posts-container">
+        <h2>PostId <%= post.id %></h2>
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar">
+              <%= post.username.charAt(0).toUpperCase() %>
+            </div>
+            <p class="username">@<%= post.username %></p>
+          </div>
+
+          <p class="content"><%= post.content %></p>
+
+          <div class="post-actions">
+            <a href="#" class="btn btn-update">Update</a>
+            <a href="#" class="btn btn-delete">Delete</a>
+            <a href="http://localhost:8080/posts" class="btn btn-update"
+              >Go Back</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

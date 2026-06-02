@@ -124,3 +124,102 @@ h2 {
 .btn-delete:hover {
     background-color: #ffdad6;
 }
+
+
+/* --- 7. Create New Post Form Styling --- */
+.form-container {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 40px auto;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Input field and Textarea ko professional design dena */
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #fafafa;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+/* Hover aur Focus karne par subtle effect */
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: #b92b27; /* Quora Red border */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(185, 43, 39, 0.1);
+}
+
+/* Textarea ko resize karne se rokna taaki design na bigde */
+.input-group textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Form Buttons Layout */
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Submit Button styling */
+.btn-submit {
+    background-color: #b92b27;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #96211e;
+}
+
+/* Cancel link button styling */
+.btn-cancel {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #f0f2f5;
+    color: #333;
+}

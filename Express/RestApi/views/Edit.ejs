@@ -14,7 +14,11 @@
     <div class="form-container">
       <h2>Create New Post</h2>
 
-      <form action="/posts/new" method="POST" class="post-form">
+      <form
+        action="/posts/<%=post.id%>?_method=PATCH"
+        method="POST"
+        class="post-form"
+      >
         <div class="input-group">
           <label for="username">Username</label>
           <input
@@ -22,7 +26,9 @@
             id="username"
             name="username"
             placeholder="e.g. ritik_rajput"
+            disabled
             required
+            value="<%=post.username%>"
           />
         </div>
 
@@ -34,11 +40,13 @@
             rows="5"
             placeholder="Write your thoughts or question here..."
             required
-          ></textarea>
+          >
+<%=post.content%></textarea
+          >
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn-submit">Add Post</button>
+          <button type="submit" class="btn-submit">Edit Post</button>
           <a href="/posts" class="btn-cancel">Cancel</a>
         </div>
       </form>
