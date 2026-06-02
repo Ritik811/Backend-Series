@@ -25,8 +25,8 @@
                     
                     <div class="post-actions">
                         <a href="/posts/<%=post.id%>/edit" class="btn btn-update">Update</a>
-                        <form action="/posts/:id?_method=DELETE" method="POST">
-                            <a href="#" class="btn btn-delete">Delete</a>
+                        <form action="/posts/<%=post.id%>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn btn-delete">Delete</button>
                         </form>
                         <a href="http://localhost:8080/posts/<%= post.id %>" class="btn btn-update">View In Details</a>
                     </div>

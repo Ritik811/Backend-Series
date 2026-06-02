@@ -105,6 +105,10 @@ h2 {
     text-align: center;
 }
 
+.btn:hover{
+    cursor: pointer;
+}
+
 /* Update Button - Elegant Blue */
 .btn-update {
     background-color: #e7f3ff;
@@ -113,16 +117,19 @@ h2 {
 
 .btn-update:hover {
     background-color: #d8eaff;
+    cursor: pointer;
 }
 
 /* Delete Button - Light Red/Danger */
 .btn-delete {
     background-color: #ffebe9;
     color: #ff4d4f;
+    border: none;
 }
 
 .btn-delete:hover {
     background-color: #ffdad6;
+    cursor: pointer;
 }
 
 

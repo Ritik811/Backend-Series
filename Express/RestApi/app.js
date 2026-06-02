@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { v4 } from "uuid";
-import methodOverride from 'method-override';
+import methodOverride from "method-override";
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(express.static(path.join(import.meta.dirname, "public")));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(methodOverride('_method'));
+app.use(methodOverride("_method"));
 
 let posts = [
   {
@@ -64,6 +64,13 @@ app.patch("/posts/:id", (req, res) => {
   let newContent = req.body.content;
   let post = posts.find((post) => post.id === id);
   post.content = newContent;
+  res.redirect("/posts");
+});
+
+app.delete("/posts/:id", (req, res) => {
+  let { id } = req.params;
+  console.log(id);
+  posts = posts.filter((post) => post.id !== id);
   res.redirect("/posts");
 });
 
