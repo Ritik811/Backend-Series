@@ -47,9 +47,15 @@ const User = mongoose.model("User", userSchema);
 // const userUpdate = await User.updateOne({ name: "Ritik", name: "Sonia" });
 // console.log(userUpdate);
 
-const userUpdate = await User.findOneAndUpdate(
-  { name: "Ritik" },
-  { age: "34" },
-  { new: true },
-);
-console.log(userUpdate);
+// const userUpdate = await User.findOneAndUpdate(
+//   { name: "Ritik" },
+//   { age: "34" },
+//   { new: true },
+// );
+// console.log(userUpdate);
+
+// const userDelete = await User.deleteOne({name: "Ritik"});
+// console.log(userDelete);
+
+const userDelete = await User.deleteMany({});
+console.log(userDelete);
