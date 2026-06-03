@@ -44,5 +44,12 @@ const User = mongoose.model("User", userSchema);
 // const userFind = await User.find({age: {$gt: 30}});
 // console.log(userFind);
 
-const userUpdate = await User.updateOne({ name: "Ritik", name: "Sonia" });
+// const userUpdate = await User.updateOne({ name: "Ritik", name: "Sonia" });
+// console.log(userUpdate);
+
+const userUpdate = await User.findOneAndUpdate(
+  { name: "Ritik" },
+  { age: "34" },
+  { new: true },
+);
 console.log(userUpdate);
