@@ -38,7 +38,7 @@ app.get("/posts/new", (req, res) => {
   res.render("new");
 });
 
-app.post("/posts/new", (req, res) => {
+app.post("/posts", (req, res) => {
   let { username, content } = req.body;
   let id = v4();
   posts.push({ id, username, content });
