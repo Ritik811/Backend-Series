@@ -1,0 +1,32 @@
+# 1. Dependency folders (Yeh sabse heavy hota hai, isko kabhi upload nahi karte)
+node_modules/
+jspm_packages/
+web_modules/
+
+# 2. Environment variables (Isme tumhare passwords aur database keys hoti hain - STRICT SECURITY)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 3. Operating System files (System ki temporary files)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 4. Logs (Error aur crash reports)
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 5. IDEs and editors configuration (VS Code ki settings)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
