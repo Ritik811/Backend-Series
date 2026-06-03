@@ -57,5 +57,8 @@ const User = mongoose.model("User", userSchema);
 // const userDelete = await User.deleteOne({name: "Ritik"});
 // console.log(userDelete);
 
-const userDelete = await User.deleteMany({});
-console.log(userDelete);
+// const userDelete = await User.deleteMany({});
+// console.log(userDelete);
+
+const userDlt = await User.findByIdAndDelete("6a1ff980721b649274d5bf86");
+console.log(userDlt);
