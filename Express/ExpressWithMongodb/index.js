@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import mongoose from "mongoose";
 import { Chat } from "./models/chat.js";
+import methodOverride from "method-override";
 
 const app = express();
 const PORT = 8080;
@@ -20,6 +21,7 @@ connectDataBase();
 app.set("view engine", "ejs");
 app.use(express.static(path.join(import.meta.dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 app.get("/", (req, res) => {
   res.send("Working");
@@ -28,7 +30,6 @@ app.get("/", (req, res) => {
 //READ Operation
 app.get("/chats", async (req, res) => {
   let chats = await Chat.find();
-  console.log(chats);
   res.render("index", { chats });
 });
 
@@ -48,11 +49,31 @@ app.post("/chats", async (req, res) => {
       created_at: new Date(),
     });
     let response = await newMsg.save();
-    console.log(response);
     res.redirect("/chats");
   } catch (error) {
     console.log(error);
   }
+});
+
+// UPDATE Operation
+
+app.get("/chats/:id/edit", async (req, res) => {
+  let { id } = req.params;
+  // console.log(id);
+  let chat = await Chat.findById(id);
+  res.render("edit", { chat });
+});
+
+app.put("/chats/:id", async (req, res) => {
+  let { from, to, msg } = req.body;
+  let { id } = req.params;
+  let updateData = await Chat.findByIdAndUpdate(
+    id,
+    { from, to, msg },
+    { new: true },
+  );
+  console.log(updateData);
+  res.redirect("/chats");
 });
 
 app.listen(PORT, () => {
