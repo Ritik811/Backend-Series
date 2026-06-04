@@ -1,0 +1,412 @@
+/* --- 8. Mini Chat Dashboard Styling --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f2f5; /* Light WhatsApp Gray background */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Chat ki Main Window */
+.chat-wrapper {
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    height: 80vh;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #e1e4e8;
+}
+
+/* Header UI */
+.chat-header {
+    background: #075e54; /* Slate green theme */
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-status {
+    width: 10px;
+    height: 10px;
+    background-color: #4caf50; /* Active green dot */
+    border-radius: 50%;
+}
+
+.chat-header h1 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Chat Body (Scrollable Messages Area) */
+.chat-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #efeae2; /* Classic Chat Wall texture color */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Chat Row Alignment Box */
+.chat-bubble-row {
+    display: flex;
+    width: 100%;
+}
+
+/* Incoming (Left Align) */
+.chat-bubble-row.incoming {
+    justify-content: flex-start;
+}
+
+/* Outgoing (Right Align) */
+.chat-bubble-row.outgoing {
+    justify-content: flex-end;
+}
+
+/* Asli Bubble Content Layout */
+.chat-bubble {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Diffrentiating Incoming and Outgoing Colors */
+.chat-bubble-row.incoming .chat-bubble {
+    background-color: #ffffff;
+    color: #303030;
+    border-top-left-radius: 2px; /* Tail effect lookalike */
+}
+
+.chat-bubble-row.outgoing .chat-bubble {
+    background-color: #d9fdd3; /* Halka green for outer chats */
+    color: #303030;
+    border-top-right-radius: 2px;
+}
+
+/* Meta Data Inside Bubble */
+.chat-user {
+    font-size: 11px;
+    font-weight: 600;
+    color: #667781;
+    margin-bottom: 4px;
+}
+
+.chat-message {
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.chat-time {
+    font-size: 10px;
+    color: #8696a0;
+    align-self: flex-end;
+    margin-top: 4px;
+}
+
+/* Footer Control UI */
+.chat-footer {
+    padding: 15px 20px;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #e1e4e8;
+}
+
+.btn-new-chat {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,123,255,0.3);
+    transition: background 0.2s;
+}
+
+.btn-new-chat:hover {
+    background-color: #0056b3;
+}
+
+/* Custom Scrollbar for Chat Box */
+.chat-container::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+/* --- 9. New Chat Form Card Styling --- */
+.form-wrapper {
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    margin: 40px auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #f0f2f5;
+    padding-bottom: 15px;
+}
+
+.form-header h2 {
+    color: #075e54; /* Green slate matching main chat dashboard */
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.form-header p {
+    color: #8696a0;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.chat-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #4f5d64;
+}
+
+/* Inputs aur Textarea styling */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fafafa;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    font-family: inherit;
+}
+
+/* Green focus effect */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #075e54;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(7, 94, 84, 0.1);
+}
+
+.form-group textarea {
+    resize: none; /* Layout fix rakhne ke liye size lock kiya */
+}
+
+/* Buttons container */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Action Buttons execution */
+.btn-send {
+    background-color: #128c7e; /* WhatsApp dark active green */
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(18, 140, 126, 0.2);
+    transition: background 0.2s;
+}
+
+.btn-send:hover {
+    background-color: #075e54;
+}
+
+.btn-back {
+    text-align: center;
+    text-decoration: none;
+    color: #667781;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.btn-back:hover {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* 1. Poora chat container jisme saare messages hain */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  max-width: 650px;
+  margin: 20px auto;
+  background-color: #efeae2; /* WhatsApp jaisa elegant background */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  height: 75vh; /* Fixed height taaki chat area section jaisa lage */
+  overflow-y: auto; /* Agar messages zyada hon toh scrollbar aa jaye */
+}
+
+/* 2. Har ek row jisme chat bubble wrap ho raha hai */
+.chat-bubble-row {
+  display: flex;
+  width: 100%;
+}
+
+/* 🟢 Outgoing (Jo Ritik ne bheja) - Row ko Right side align karega */
+.outgoing {
+  justify-content: flex-end;
+}
+
+/* ⚪ Incoming (Jo doosro se aaya) - Row ko Left side hi rakhega */
+.incoming {
+  justify-content: flex-start;
+}
+
+/* 3. Common Chat Bubble Styling */
+.chat-bubble {
+  max-width: 65%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Outgoing Bubble ka color aur shape */
+.outgoing .chat-bubble {
+  background-color: #d9fdd3; /* Soft Green */
+  color: #111b21;
+  border-top-right-radius: 0px; /* Bubble look */
+}
+
+/* Incoming Bubble ka color aur shape */
+.incoming .chat-bubble {
+  background-color: #ffffff; /* Clean White */
+  color: #111b21;
+  border-top-left-radius: 0px; /* Bubble look */
+}
+
+/* 4. Inside Bubble Elements (User, Message, Time) */
+.chat-user {
+  font-size: 11px;
+  font-weight: 600;
+  color: #00a884; /* WhatsApp Green Accent */
+  margin-bottom: 4px;
+}
+
+.incoming .chat-user {
+  color: #53bdeb; /* Alal users ke liye Blue Accent */
+}
+
+.chat-message {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+  word-wrap: break-word; /* Agar lamba text ho toh line break ho jaye */
+  padding-bottom: 12px; /* Time ke liye thodi jagah */
+}
+
+.chat-time {
+  font-size: 10px;
+  color: #667781;
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+}
+
+/* --- Buttons Container --- */
+.post-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+    border-top: 1px solid #f0f2f5;
+    padding-top: 15px;
+}
+
+/* Base Common Button Styling */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    border: none;
+}
+
+/* 🔵 Premium Blue Edit Button */
+.btn-update, .btn-edit {
+    background-color: #e7f3ff; /* Halka blue background */
+    color: #1877f2; /* Professional Facebook Blue */
+}
+
+/* Hover karne par premium dark effect */
+.btn-update:hover, .btn-edit:hover {
+    background-color: #1877f2;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(24, 119, 242, 0.15);
+}
+
+/* 🔴 Soft Red Delete Button */
+.btn-delete {
+    background-color: #ffebe9; /* Halka red background */
+    color: #ff3333;
+}
+
+.btn-delete:hover {
+    background-color: #ff3333;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(255, 51, 51, 0.15);
+}
+
+/* Active State: Click karte hi button dabta hua dikhega */
+.btn:active {
+    transform: scale(0.96);
+}

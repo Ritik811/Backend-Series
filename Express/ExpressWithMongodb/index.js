@@ -17,22 +17,42 @@ const connectDataBase = async () => {
 
 connectDataBase();
 
-let newChat = new Chat({
-  from: "Bihar",
-  to: "Patna",
-  msg: "Kya kr rha hai",
-  createAt: new Date(),
-});
-
-let res = await newChat.save();
-console.log(res);
-
 app.set("view engine", "ejs");
 app.use(express.static(path.join(import.meta.dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("Working");
+});
+
+//READ Operation
+app.get("/chats", async (req, res) => {
+  let chats = await Chat.find();
+  console.log(chats);
+  res.render("index", { chats });
+});
+
+// CREATE OPERATION
+app.get("/chats/new", (req, res) => {
+  res.render("new");
+});
+
+app.post("/chats", async (req, res) => {
+  try {
+    let { from, to, msg } = req.body;
+    console.log(from, to, msg);
+    let newMsg = new Chat({
+      from,
+      to,
+      msg,
+      created_at: new Date(),
+    });
+    let response = await newMsg.save();
+    console.log(response);
+    res.redirect("/chats");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 app.listen(PORT, () => {

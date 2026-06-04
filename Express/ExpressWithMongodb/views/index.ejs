@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Chat Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css"> </head>
+<body>
+
+    <div class="chat-wrapper">
+        <div class="chat-header">
+            <div class="header-status"></div>
+            <h1>Mini Chat Messenger</h1>
+        </div>
+
+        <div class="chat-container">
+            <% chats.forEach((chat) => { %>
+                <div class="chat-bubble-row <%= chat.from === 'ritik' ? 'outgoing' : 'incoming' %>">
+    
+    <div class="chat-bubble">
+        <span class="chat-user">
+            <%= chat.from === 'ritik' ? `To: @${chat.to}` : `@${chat.from}` %>
+        </span>
+        
+        <p class="chat-message"><%= chat.msg %></p>
+        
+        <div class="post-actions">
+            <a href="/chats/<%= chat._id %>/edit" class="btn btn-edit">Edit Chat</a>
+            <button class="btn btn-delete">Delete</button>
+        </div>
+        
+        <span class="chat-time">
+            <%= new Date(chat.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %>
+        </span>
+    </div>
+
+</div>
+            <% }) %>
+        </div>
+
+        <div class="chat-footer">
+            <a href="/chats/new" class="btn-new-chat">+ Start New Conversation</a>
+        </div>
+    </div>
+
+</body>
+</html>
