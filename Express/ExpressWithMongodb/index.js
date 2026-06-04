@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import mongoose from "mongoose";
+import { Chat } from "./models/chat.js";
 
 const app = express();
 const PORT = 8080;
@@ -15,6 +16,16 @@ const connectDataBase = async () => {
 };
 
 connectDataBase();
+
+let newChat = new Chat({
+  from: "Bihar",
+  to: "Patna",
+  msg: "Kya kr rha hai",
+  createAt: new Date(),
+});
+
+let res = await newChat.save();
+console.log(res);
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(import.meta.dirname, "public")));
