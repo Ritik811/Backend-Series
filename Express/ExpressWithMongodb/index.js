@@ -25,13 +25,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use("/chats", chatRouter);
 
-// app.get("/chats/login", (req, res) => {
-//   res.render("loginPage");
-// });
+app.get("/chats/login", (req, res) => {
+  res.render("loginPage");
+});
 
-// app.get("/chats/register", (req, res) => {
-//   res.render("registerPage");
-// });
+app.get("/chats/register", (req, res) => {
+  res.render("registerPage");
+});
 
 app.listen(PORT, () => {
   console.log("Server is Running PORT", PORT);

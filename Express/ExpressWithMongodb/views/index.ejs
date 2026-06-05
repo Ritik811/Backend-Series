@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Chat Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css"> </head>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
 <body>
+
+    <div class="auth-navbar">
+        <div class="auth-welcome">Welcome to MiniChat 👋</div>
+        <div class="auth-buttons">
+            <a href="/chats/login" class="btn btn-login">Login</a>
+            <a href="/chats/register" class="btn btn-register">Register</a>
+        </div>
+    </div>
 
     <div class="chat-wrapper">
         <div class="chat-header">
@@ -17,25 +26,23 @@
         <div class="chat-container">
             <% chats.forEach((chat) => { %>
                 <div class="chat-bubble-row <%= chat.from === 'ritik' ? 'outgoing' : 'incoming' %>">
-    
-    <div class="chat-bubble">
-        <span class="chat-user">
-            <%= chat.from === 'ritik' ? `To: @${chat.to}` : `@${chat.from}` %>
-        </span>
-        
-        <p class="chat-message"><%= chat.msg %></p>
-        
-        <form method="POST" action="/chats/<%=chat._id%>?_method=DELETE" class="post-actions">
-            <a href="/chats/<%= chat._id %>/edit" class="btn btn-edit">Edit Chat</a>
-            <button type="submit" class="btn btn-delete">Delete</button>
-        </form>
-        
-        <span class="chat-time">
-            <%= new Date(chat.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %>
-        </span>
-    </div>
-
-</div>
+                    <div class="chat-bubble">
+                        <span class="chat-user">
+                            <%= chat.from === 'ritik' ? `To: @${chat.to}` : `@${chat.from}` %>
+                        </span>
+                        
+                        <p class="chat-message"><%= chat.msg %></p>
+                        
+                        <form method="POST" action="/chats/<%=chat._id%>?_method=DELETE" class="post-actions">
+                            <a href="/chats/<%= chat._id %>/edit" class="btn btn-edit">Edit Chat</a>
+                            <button type="submit" class="btn btn-delete">Delete</button>
+                        </form>
+                        
+                        <span class="chat-time">
+                            <%= new Date(chat.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %>
+                        </span>
+                    </div>
+                </div>
             <% }) %>
         </div>
 
