@@ -25,10 +25,10 @@
         
         <p class="chat-message"><%= chat.msg %></p>
         
-        <div class="post-actions">
+        <form method="POST" action="/chats/<%=chat._id%>?_method=DELETE" class="post-actions">
             <a href="/chats/<%= chat._id %>/edit" class="btn btn-edit">Edit Chat</a>
-            <button class="btn btn-delete">Delete</button>
-        </div>
+            <button type="submit" class="btn btn-delete">Delete</button>
+        </form>
         
         <span class="chat-time">
             <%= new Date(chat.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) %>
