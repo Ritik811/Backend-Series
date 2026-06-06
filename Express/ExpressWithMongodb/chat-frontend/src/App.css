@@ -1,0 +1,127 @@
+/* ==========================================================================
+   🔑 LOGIN & REGISTER PAGES PREMIUM STYLING
+   ========================================================================== */
+
+.auth-container-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+}
+
+.auth-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.auth-header-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header-title h2 {
+    color: #333333;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.auth-header-title p {
+    color: #777777;
+    font-size: 0.9rem;
+}
+
+/* Form Styles */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-input-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #444444;
+}
+
+.form-input-group input {
+    padding: 12px 16px;
+    border: 1.5px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* Input Focus Effect */
+.form-input-group input:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+}
+
+/* Submit Button */
+.btn-auth-submit {
+    background: #4A90E2;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-auth-submit:hover {
+    background: #357ABD;
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+    transform: translateY(-1px);
+}
+
+/* Footer links inside card */
+.auth-card-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #555555;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-card-footer a {
+    color: #4A90E2;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-card-footer a:hover {
+    text-decoration: underline;
+}
+
+.back-to-dashboard {
+    font-size: 0.85rem;
+    color: #888888 !important;
+    transition: color 0.2s ease;
+}
+
+.back-to-dashboard:hover {
+    color: #333333 !important;
+    text-decoration: none !important;
+}

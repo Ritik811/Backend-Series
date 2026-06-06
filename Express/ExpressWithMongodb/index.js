@@ -23,6 +23,7 @@ const connectDataBase = async () => {
 connectDataBase();
 
 app.use(cors());
+app.use(express.json());
 app.set("view engine", "ejs");
 app.use(express.static(path.join(import.meta.dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
@@ -95,7 +96,10 @@ app.post("/chats/login", async (req, res) => {
       // res.redirect("/chats");
     } else {
       console.log("password is Wrong ReEnter Password");
-      res.send("password is Wrong ReEnter Password");
+      return res.status(401).json({
+        success: false,
+        message: "Password is Wrong, Please Re-Enter",
+      });
       return;
     }
   } catch (error) {
