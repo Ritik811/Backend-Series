@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Login } from "./components/Login";
 import { Registration } from "./components/Registration";
+import { Dashboard } from "./components/Dashboard"; // 🔥 Naya dashboard import kiya
 import "./App.css";
 
 const App = () => {
-  // 'isLogin' state handle karegi ki login dikhana hai ya register
   const [isLogin, setIsLogin] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // 🔄 Page load hote hi check karo ki kya user pehle se logged in hai?
+  useEffect(() => {
+    const user = localStorage.getItem("username");
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  // 🎯 Agar user login ho chuka hai, toh direct Dashboard dikhao
+  if (isLoggedIn) {
+    return <Dashboard onLogout={() => setIsLoggedIn(false)} />;
+  }
+
+  // 🎯 Agar logged in nahi hai, toh Auth Screens (Login/Register) dikhao
   return (
-    // 🎯 WARNING FIXED: Material UI Box hata kar standard HTML div aur inline styles lagaye
     <div
       style={{
         display: "flex",
@@ -19,10 +33,12 @@ const App = () => {
         backgroundColor: "#f5f5f5",
       }}
     >
-      {/* 1. State ke basis par component render hoga */}
-      {isLogin ? <Login /> : <Registration />}
+      {isLogin ? (
+        <Login onLoginSuccess={() => setIsLoggedIn(true)} />
+      ) : (
+        <Registration />
+      )}
 
-      {/* 2. Toggle karne ke liye niche ek chota sa button */}
       <div style={{ marginTop: "16px" }}>
         <p
           style={{

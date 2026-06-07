@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { login } from "../api/chat";
 
-export const Login = () => {
+export const Login = ({ onLoginSuccess }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -23,7 +23,9 @@ export const Login = () => {
       const data = await login(formData);
       if (data.success) {
         setSuccess(data.message);
+        localStorage.setItem("token", data.token);
         localStorage.setItem("username", data.username);
+        onLoginSuccess();
         console.log("User successfully logged in and saved to local storage!");
       }
     } catch (error) {

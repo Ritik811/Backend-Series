@@ -7,7 +7,10 @@ import chatRouter from "./Routes/chatRouter.js";
 import { User } from "./models/register.js";
 import bcrypt from "bcrypt";
 import cors from "cors";
+import jwt from "jsonwebtoken";
+import { verifyToken } from "./middlewares/authMiddleware.js";
 
+const JWT_SECRET = "MeraSecretChatKey123";
 const app = express();
 const PORT = 8080;
 
@@ -88,9 +91,21 @@ app.post("/chats/login", async (req, res) => {
 
     if (isMatch) {
       console.log("user Valid Login");
+
+      const token = jwt.sign(
+        {
+          userId: userExist._id,
+          username: userExist.username,
+        },
+
+        JWT_SECRET,
+        { expiresIn: "1d" },
+      );
+
       res.status(200).json({
         success: true,
         message: "login Success",
+        token: token,
         username: userExist.username,
       });
       // res.redirect("/chats");
@@ -110,6 +125,18 @@ app.post("/chats/login", async (req, res) => {
       error: error.message,
     });
   }
+});
+
+app.get("/chats/dashboard-data", verifyToken, (req, res) => {
+  // Kyunki verifyToken ne next() call kiya, toh hum yahan tak pahuche
+  // req.user ke andar ab user ki id aur username pehle se maujood hai!
+
+  res.status(200).json({
+    success: true,
+    message: "Welcome to the secret zone!",
+    secretData: "Bhai, yeh data sirf logged-in user hi dekh sakta hai!",
+    user: req.user, // Isme uski ID aur username hoga
+  });
 });
 
 app.listen(PORT, () => {
